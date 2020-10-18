@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 
 from rest_framework import status
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -12,12 +11,14 @@ from grid_api.serializers import SimulationSerializer
 
 @api_view(['POST'])
 def launch_simulation(request):
-    # Create a simulation object (not persisted)
+    """Run a simulation and persist it in the database."""
+
     simulation = Simulation()
     simulation.run()
     simulation.save()
 
     serializer = SimulationSerializer(simulation)
+
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

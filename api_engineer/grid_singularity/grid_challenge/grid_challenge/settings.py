@@ -45,7 +45,6 @@ CHANNEL_LAYERS = {
 
 DEFAULT_WS_GROUP = 'simulations_channel'
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

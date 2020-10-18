@@ -1,13 +1,13 @@
 import json
+
+from asgiref.sync import async_to_sync
+
 from channels.generic.websocket import WebsocketConsumer
 from django.conf import settings
 
+from grid_api import messages
 from grid_api.serializers import SimulationSerializer
 from grid_api.models import Simulation
-
-from grid_api import messages
-
-from asgiref.sync import async_to_sync
 
 
 class SimulationConsumer(WebsocketConsumer):

@@ -6,7 +6,4 @@ import grid_api.routing
 
 
 application = ProtocolTypeRouter({
-    'websocket': URLRouter(
-            grid_api.routing.websocket_urlpatterns
-        )
-})
+    'websocket': URLRouter(grid_api.routing.websocket_urlpatterns)})
