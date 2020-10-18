@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  web:
+    environment:
+      - CONTAINER_ROOT_DIR=/usr/bin/app/
+    build:
+      context: .
+      args:
+        CONTAINER_ROOT_DIR: ${CONTAINER_ROOT_DIR}
+    volumes:
+      # Mount the current directory on the host. This allows to modify the code
+      # on the fly without having to rebuild the image.
+      - .:${CONTAINER_ROOT_DIR}
+    ports:
+      - 8000:8000
+    depends_on:
+      - redis
+    command: python manage.py runserver 0.0.0.0:8000
+
+  redis:
+    image: redis:alpine
+    ports:
+       - 6379:6379
