@@ -6,6 +6,8 @@ To build and run the Docker image using docker compose:
 
 ```sh
 cd api_engineer/grid_singularity/
+# Rename the example env file to .env to directly use its contents
+mv .env.example .env
 docker-compose up
 
 # Generate and run Django migrations
@@ -45,4 +47,3 @@ websocat ws://127.0.0.1:8000/ws/simulations/
 ## Notes
 
 - The database is currently using the default Django settings (just a sqlite database). In a production environment, this should be better implemented as a separate dockerized service using, for example, PostgreSQL.
-- In order to avoid the manual creation of `.env` files, we are currently defining env variables directly in the `docker-compose.yml` file (under `environment`). In general, using `.env` files would be the recommended practice.
